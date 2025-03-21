@@ -1,0 +1,180 @@
+[
+{
+      "icon": "fa-solid fa-money-bill-wave", 
+      "category": "Orderkuota",
+      "api": [
+        {
+          "name": "Create Payment",
+          "path": "/orderkuota/createpayment?apikey=&amount=&codeqr="
+        },
+        {
+          "name": "Cek Status",
+          "path": "/orderkuota/cekstatus?apikey=&merchant=&keyorkut="
+        }
+      ]
+},
+{
+      "icon": "fa-solid fa-robot", 
+      "category": "AI",
+      "api": [
+        {
+          "name": "Openai",
+          "path": "/ai/openai?apikey=&text="
+        },
+        {
+          "name": "Deepseek",
+          "path": "/ai/deepseek?apikey=&text="
+        }, 
+        {
+          "name": "Text 2 Image",
+          "path": "/ai/text2image?apikey=&prompt="
+        }, 
+        {
+          "name": "TiktokCaptionGenerator",
+          "path": "/ai/tiktok/generate-caption?apikey=&prompt="
+        }
+      ]
+},
+{
+      "icon": "fa-solid fa-cloud-arrow-down", 
+      "category": "Downloader",
+      "api": [
+        {
+          "name": "Tiktok",
+          "path": "/download/tiktok?apikey=&url="
+        },
+        {
+          "name": "Capcut",
+          "path": "/download/capcut?apikey=&url="
+        },        
+        {
+          "name": "XNXX",
+          "path": "/download/xnxx?apikey=&url="
+        },   
+        {
+          "name": "Instagram",
+          "path": "/download/instagram?apikey=&url="
+        },                             
+        {
+          "name": "Facebook",
+          "path": "/download/facebook?apikey=&url="
+        }, 
+        {
+          "name": "Videy",
+          "path": "/download/videy?apikey=&url="
+        },
+        {
+          "name": "Ytmp3",
+          "path": "/download/ytmp3?apikey=&url="
+        }, 
+        {
+          "name": "Snackvideo",
+          "path": "/download/snackvideo?apikey=&url="
+        }, 
+        {
+          "name": "Gitclone",
+          "path": "/download/github?apikey=&url="
+        }, 
+        {
+          "name": "Mediafire",
+          "path": "/download/mediafire?apikey=&url="
+        }                           
+      ]
+}, 
+{
+      "icon": "fa-solid fa-magnifying-glass", 
+      "category": "Search",
+      "api": [
+        {
+          "name": "Youtube Search",
+          "path": "/search/youtube?apikey=&q="
+        }, 
+        {
+          "name": "Tiktok Search",
+          "path": "/search/tiktok?apikey=&q="
+        }, 
+        {
+          "name": "Npm Search",
+          "path": "/search/npm?apikey=&q="
+        }, 
+        {
+          "name": "Pinterest",
+          "path": "/search/pinterest?apikey=&q="
+        }, 
+        {
+          "name": "Playstore",
+          "path": "/search/playstore?apikey=&q="
+        }, 
+        {
+          "name": "Happymod",
+          "path": "/search/happymod?apikey=&q="
+        }, 
+        {
+          "name": "XNXX Search",
+          "path": "/search/xnxx?apikey=&q="
+        }            
+      ]
+}, 
+{
+      "icon": "fas fa-tools", 
+      "category": "Tools",
+      "api": [
+        {
+          "name": "Emojimix",
+          "path": "/tools/emojimix?apikey=&emoji1=&emoji2="
+        }, 
+        {
+          "name": "Emoji To Gif",
+          "path": "/tools/emojitogif?apikey=&emoji="
+        }, 
+        {
+          "name": "Screenshot Web",
+          "path": "/tools/ssweb?apikey=&url="
+        }
+      ]
+}, 
+{
+      "icon": "fa-regular fa-images", 
+      "category": "Image Creator",
+      "api": [
+        {
+          "name": "Brat Generator",
+          "path": "/imagecreator/brat?apikey=&text="
+        },
+        {
+          "name": "Remini",
+          "path": "/imagecreator/remini?apikey=&url="
+        }, 
+        {
+          "name": "Removebg",
+          "path": "/imagecreator/removebg?apikey=&url="
+        }, 
+        {
+          "name": "Upscale",
+          "path": "/imagecreator/upscale?apikey=&url="
+        }, 
+        {
+          "name": "Colorize",
+          "path": "/imagecreator/colorize?apikey=&url="
+        }
+      ]
+}, 
+{
+      "icon": "fa-solid fa-eye", 
+      "category": "Stalker",
+      "api": [
+        {
+          "name": "Instagram Stalk",
+          "path": "/stalk/instagram?apikey=&user="
+        },
+        {
+          "name": "Tiktok Stalk",
+          "path": "/stalk/tiktok?apikey=&user="
+        }, 
+        {
+          "name": "Npm Stalk",
+          "path": "/stalk/npm?apikey=&name="
+        }        
+      ]
+}
+]
