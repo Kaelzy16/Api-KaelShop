@@ -2,6 +2,7 @@ const axios = require('axios');
 const { fromBuffer } = require('file-type');
 const qs = require('qs');
 
+// Helper untuk ambil buffer dari URL
 const getBuffer = async (url, options = {}) => {
   try {
     const res = await axios({
@@ -25,18 +26,20 @@ const toolList = ['removebg', 'enhance', 'upscale', 'restore', 'colorize'];
 const pxpic = {
   upload: async (buffer) => {
     const fileInfo = await fromBuffer(buffer);
-    if (!fileInfo) throw new Error('Gagal mendeteksi tipe file.');
-    
+    if (!fileInfo) throw new Error('Gagal mengenali tipe file');
+
     const { ext, mime } = fileInfo;
     const fileName = `${Date.now()}.${ext}`;
     const folder = 'uploads';
 
     const res = await axios.post('https://pxpic.com/getSignedUrl', {
-      folder,
-      fileName
+      folder, fileName
     }, {
       headers: { 'Content-Type': 'application/json' }
     });
+
+    if (!res.data || !res.data.presignedUrl)
+      throw new Error('Gagal mendapatkan signed URL');
 
     const { presignedUrl } = res.data;
 
@@ -49,13 +52,12 @@ const pxpic = {
 
   create: async (buffer, toolName) => {
     if (!toolList.includes(toolName)) {
-      throw new Error(`Tool tidak valid. Gunakan salah satu: ${toolList.join(', ')}`);
+      throw new Error(`Tool tidak tersedia. Pilih: ${toolList.join(', ')}`);
     }
 
-    const imageUrl = await pxpic.upload(buffer);
-
-    const data = qs.stringify({
-      imageUrl,
+    const url = await pxpic.upload(buffer);
+    const form = qs.stringify({
+      imageUrl: url,
       targetFormat: 'png',
       needCompress: 'no',
       imageQuality: '100',
@@ -65,9 +67,9 @@ const pxpic = {
       upscalingLevel: ''
     });
 
-    const res = await axios.post('https://pxpic.com/callAiFunction', data, {
+    const res = await axios.post('https://pxpic.com/callAiFunction', form, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Android 10; Mobile; rv:131.0) Gecko/131.0 Firefox/131.0',
+        'User-Agent': 'Mozilla/5.0',
         'Accept': '*/*',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept-Language': 'id-ID'
@@ -75,7 +77,7 @@ const pxpic = {
     });
 
     if (!res.data || !res.data.resultImageUrl) {
-      throw new Error('Gagal mendapatkan hasil dari API pxpic');
+      throw new Error('Gagal mendapatkan hasil gambar dari pxpic');
     }
 
     return res.data.resultImageUrl;
@@ -100,18 +102,18 @@ module.exports = function (app) {
       }
 
       if (!url) {
-        return res.status(400).json({ status: false, error: 'URL diperlukan' });
+        return res.status(400).json({ status: false, error: 'URL is required' });
       }
 
       try {
         const buffer = await getBuffer(url);
         const resultUrl = await pxpic.create(buffer, tool);
-        return res.json({
+        return res.status(200).json({
           status: true,
           result: resultUrl
         });
-      } catch (err) {
-        return res.status(500).json({ status: false, error: err.message });
+      } catch (error) {
+        return res.status(500).json({ status: false, error: error.message });
       }
     });
   });
