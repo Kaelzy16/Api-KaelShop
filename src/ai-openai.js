@@ -4,9 +4,9 @@ const Groq = require('groq-sdk');
 module.exports = function(app) {
     let api = [
 "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", 
-"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", 
-"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", 
-"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"
+"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", 
+"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", 
+"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"
 ]
 
 let apikey = api[Math.floor(Math.random() * api.length)]
