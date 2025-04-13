@@ -3,7 +3,7 @@ const Groq = require('groq-sdk');
 
 module.exports = function(app) {
     let api = [
-"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", 
+"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", 
 "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", 
 "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", 
 "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"
